@@ -69,7 +69,7 @@ public class Sprite
         Vector2 scale = AffineMatrix?.Scale ?? Vector2.One;
 
         renderer.Draw(
-            texture: Texture, 
+            texture: Texture,
             position: Center ? Position + center : Position, 
             sourceRectangle: textureRectangle, 
             rotation: rotation, 

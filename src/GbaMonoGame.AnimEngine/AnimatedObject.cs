@@ -119,6 +119,8 @@ public class AnimatedObject : AObject
         set => Alpha = value / 16;
     }
 
+    public float Scale { get; set; } = 1;
+
     public bool OverrideGfxColor { get; set; } // Needed for the curtains in the worldmap which are not effected by the palette fading
 
     public BoxTable BoxTable { get; set; }
@@ -300,7 +302,7 @@ public class AnimatedObject : AObject
                     Constants.Size shape = Constants.GetSpriteShape(channel.SpriteShape, channel.SpriteSize);
 
                     // Get x position
-                    float xPos = channel.XPosition;
+                    float xPos = channel.XPosition * Scale;
 
                     Vector2 pos = GetAnchoredPosition();
 
@@ -310,12 +312,16 @@ public class AnimatedObject : AObject
                         xPos = pos.X - xPos - shape.Width;
 
                     // Get y position
-                    float yPos = channel.YPosition;
+                    float yPos = channel.YPosition * Scale;
 
                     if (!FlipY)
                         yPos += pos.Y;
                     else
                         yPos = pos.Y - yPos - shape.Height;
+
+                    // TEST: This code was used to disable animation offsets before
+                    //xPos = pos.X;
+                    //yPos = pos.Y;
 
                     AffineMatrix? affineMatrix = null;
 
@@ -449,7 +455,8 @@ public class AnimatedObject : AObject
             channelIndex++;
         }
 
-        ComputeNextFrame();
+        // TEST: Commented out to disable animations
+        //ComputeNextFrame();
     }
 
     #endregion

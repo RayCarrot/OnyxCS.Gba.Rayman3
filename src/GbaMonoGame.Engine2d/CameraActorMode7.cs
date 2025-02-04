@@ -106,7 +106,10 @@ public abstract class CameraActorMode7 : CameraActor
         Vector3 screenPos2 = cam.Project(actorPos + new Vector3(0, 0, 1));
         float scale = (new Vector2(screenPos.X, screenPos.Y) - new Vector2(screenPos2.X, screenPos2.Y)).Length();
         actor.AnimatedObject.AffineMatrix = new AffineMatrix(0, new Vector2(scale * baseScale));
-        
+
+        // TEST: Set the scale for the animation offsets
+        actor.AnimatedObject.Scale = scale;
+
         return true;
     }
 

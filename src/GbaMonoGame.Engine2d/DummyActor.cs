@@ -3,7 +3,9 @@
 namespace GbaMonoGame.Engine2d;
 
 // Temporary class
-public class DummyActor : BaseActor
+
+// TEST: Force to ActionActor so hitboxes show for not-implemented actors too
+public class DummyActor : ActionActor
 {
     public DummyActor(int instanceId, Scene2D scene, ActorResource actorResource) : base(instanceId, scene, actorResource)
     {
