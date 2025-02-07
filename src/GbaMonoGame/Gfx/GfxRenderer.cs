@@ -17,6 +17,7 @@ public class GfxRenderer
         _paletteTextureParam = _paletteShader.Parameters["PaletteTexture"];
         _paletteIndexParam = _paletteShader.Parameters["PaletteIndex"];
         _paletteHeightParam = _paletteShader.Parameters["PaletteHeight"];
+        _worldViewProjParam = _paletteShader.Parameters["WorldViewProj"];
     }
 
     #endregion
@@ -31,6 +32,7 @@ public class GfxRenderer
     private readonly EffectParameter _paletteTextureParam;
     private readonly EffectParameter _paletteIndexParam;
     private readonly EffectParameter _paletteHeightParam;
+    private readonly EffectParameter _worldViewProjParam;
 
     #endregion
 
@@ -61,6 +63,7 @@ public class GfxRenderer
                 _paletteTextureParam.SetValue(options.PaletteTexture.Texture);
                 _paletteIndexParam.SetValue(options.PaletteTexture.PaletteIndex);
                 _paletteHeightParam.SetValue(options.PaletteTexture.Texture.Height);
+                _worldViewProjParam.SetValue(Matrix.CreateScale(0.02f));
             }
 
             // Begin a new batch
